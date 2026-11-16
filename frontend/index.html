@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1e4636" />
+    <meta name="description" content="Cerca annunci usati su Subito, Vinted, Wallapop e Depop." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Usato" />
+    <title>Usato</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <p class="eyebrow">Subito · Vinted · Wallapop · Depop</p>
+        <h1>Usato</h1>
+      </div>
+      <button id="install" type="button" hidden>Installa</button>
+    </header>
+
+    <main>
+      <nav class="views">
+        <button type="button" id="show-search" aria-pressed="true">Cerca</button>
+        <button type="button" id="show-saved" aria-pressed="false">Preferiti</button>
+      </nav>
+
+      <section id="search-view">
+        <form id="search" class="search">
+          <label class="query">
+            <span>Cosa cerchi</span>
+            <input id="q" name="q" type="search" placeholder="giacca, bici, iPhone…" autocomplete="off" enterkeyhint="search" />
+          </label>
+          <label>
+            <span>Città</span>
+            <input id="city" name="city" type="text" placeholder="Roma, Milano…" autocomplete="address-level2" />
+          </label>
+          <div class="prices">
+            <label>
+              <span>Da €</span>
+              <input id="minPrice" name="minPrice" type="number" inputmode="decimal" min="0" step="1" placeholder="0" />
+            </label>
+            <label>
+              <span>A €</span>
+              <input id="maxPrice" name="maxPrice" type="number" inputmode="decimal" min="0" step="1" placeholder="100" />
+            </label>
+          </div>
+          <fieldset class="sites">
+            <legend>Siti</legend>
+            <label><input type="checkbox" name="platforms" value="subito" checked /> Subito</label>
+            <label><input type="checkbox" name="platforms" value="vinted" checked /> Vinted</label>
+            <label><input type="checkbox" name="platforms" value="wallapop" checked /> Wallapop</label>
+            <label><input type="checkbox" name="platforms" value="depop" checked /> Depop</label>
+          </fieldset>
+          <fieldset class="sort">
+            <legend>Ordine</legend>
+            <label><input type="radio" name="sort" value="price_asc" checked /> Più economico</label>
+            <label><input type="radio" name="sort" value="price_desc" /> Più caro</label>
+          </fieldset>
+          <button type="submit">Cerca annunci</button>
+        </form>
+        <div id="recents" class="recents" hidden></div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <ul id="results" class="results"></ul>
+        <button id="more" type="button" class="more" hidden>Mostra altri</button>
+      </section>
+
+      <section id="saved-view" hidden>
+        <p id="saved-status" class="status">I preferiti restano salvati su questo server, per questo telefono.</p>
+        <ul id="saved" class="results"></ul>
+      </section>
+
+      <section class="help">
+        <h2>Come si usa</h2>
+        <ol>
+          <li>Scegli i siti, la città e la fascia di prezzo.</li>
+          <li>Premi <strong>Cerca annunci</strong>. Il prezzo va chiesto ai siti, non solo tagliato dopo.</li>
+          <li><strong>Mostra altri</strong> carica la pagina dopo. Il cuore salva l’annuncio.</li>
+          <li>Le ricerche recenti riaprono la stessa ricerca. Il link della pagina fa lo stesso.</li>
+        </ol>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
